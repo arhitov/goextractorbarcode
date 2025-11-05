@@ -20,3 +20,11 @@ func (e *extractor) Images(imgs []image.Image) []*extractorImage {
 	}
 	return res
 }
+
+func (e *extractor) Pdf(filePath string) (*extractorPdfReady, error) {
+	if ext, err := NewExtractorPdf(filePath).Read(); err != nil {
+		return nil, err
+	} else {
+		return ext, nil
+	}
+}
