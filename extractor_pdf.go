@@ -41,6 +41,21 @@ func (e *extractorPdfReady) NumPage() int {
 	return e.doc.NumPage()
 }
 
+// PageToImage Извлекаем изображение страницы
+// pageNum - номер страницы (начина с 1)
+func (e *extractorPdfReady) PageToImage(pageNum int) (image.Image, error) {
+	// Получаем количество страниц
+	pageCount := e.doc.NumPage()
+	if pageNum > pageCount {
+		return nil, fmt.Errorf("Страница %d не найдена", pageNum)
+	}
+	img, err := e.doc.Image(pageNum - 1)
+	if err != nil {
+		return nil, err
+	}
+	return img, nil
+}
+
 // ToImages Преобразуем каждую страницу в изображение
 func (e *extractorPdfReady) ToImages() []image.Image {
 	// Получаем количество страниц
