@@ -1,11 +1,8 @@
 module github.com/arhitov/goextractorbarcode
 
-go 1.23.0
+go 1.24.0
 
-require (
-	github.com/gen2brain/go-fitz v1.23.7
-	github.com/makiuchi-d/gozxing v0.1.1
-)
+require github.com/makiuchi-d/gozxing v0.1.1
 
 require (
 	golang.org/x/text v0.3.7 // indirect
